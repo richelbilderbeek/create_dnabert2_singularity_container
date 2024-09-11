@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo singularity build dnabert2_with_triton.sif dnabert2_with_triton.def
+sudo singularity build dnabert2.sif dnabert2.def

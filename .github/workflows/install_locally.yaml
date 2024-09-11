@@ -1,0 +1,45 @@
+# Install locally, goal is to see if DNABERT2 works at all
+name: Install DNABERT 2 locally
+
+# Run this script on the 3rd day of the month.
+# 3rd as the first letter of this repo is the 3rd letter in the alphabet.
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+  - cron: "0 0 3 * *"
+
+jobs:
+  install_locally:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        singularity_version:
+          - '3.8.1'
+    container:
+      image: quay.io/singularity/singularity:v${{ matrix.singularity_version }}
+      options: --privileged
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show singularity version
+        run: singularity version
+
+      - name: Install DNABERT 2 locally
+        run: |
+          git clone https://github.com/MAGICS-LAB/DNABERT_2
+          cd DNABERT_2
+          python3 -m pip install -r requirements.txt
+          cd ..
+
+      - name: Run example code
+        run: python example_dnabert2_with_triton.py
+
