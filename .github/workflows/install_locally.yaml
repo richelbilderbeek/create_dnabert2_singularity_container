@@ -15,14 +15,6 @@ jobs:
   install_locally:
 
     runs-on: ubuntu-latest
-    timeout-minutes: 30
-    strategy:
-      matrix:
-        singularity_version:
-          - '3.8.1'
-    container:
-      image: quay.io/singularity/singularity:v${{ matrix.singularity_version }}
-      options: --privileged
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
