@@ -4,6 +4,10 @@ This script creates a Singularity container with DNABERT2.
 
 - DNABERT 2: [https://github.com/MAGICS-LAB/DNABERT_2](https://github.com/MAGICS-LAB/DNABERT_2)
 
+See also
+
+- [Create a DNABERT2 with Triton Singularity container](https://github.com/richelbilderbeek/create_dnabert2_with_triton_singularity_container)
+
 ## Building the container
 
 Do:
