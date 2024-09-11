@@ -1,5 +1,5 @@
 # Build the Singularity container
-name: Buid Singularity container
+name: Build Singularity container
 
 # Run this script on the 3rd day of the month.
 # 3rd as the first letter of this repo is the 3rd letter in the alphabet.

@@ -1,5 +1,9 @@
 # How to create a Singularity container with DNABERT2
 
+[![Install DNABERT 2 locally](https://github.com/richelbilderbeek/create_dnabert2_singularity_container/actions/workflows/install_locally.yaml/badge.svg?branch=master)](https://github.com/richelbilderbeek/create_dnabert2_singularity_container/actions/workflows/install_locally.yaml)
+[![Build Singularity container](https://github.com/richelbilderbeek/create_dnabert2_singularity_container/actions/workflows/build_singularity.yaml/badge.svg)](https://github.com/richelbilderbeek/create_dnabert2_singularity_container/actions/workflows/build_singularity.yaml)
+
+
 This script creates a Singularity container with DNABERT2.
 
 - DNABERT 2: [https://github.com/MAGICS-LAB/DNABERT_2](https://github.com/MAGICS-LAB/DNABERT_2)
