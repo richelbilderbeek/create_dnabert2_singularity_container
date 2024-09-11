@@ -14,6 +14,9 @@ From: python:3.8.19
 
     python3 -m pip install -r requirements.txt
 
+    # It does install Triton, remove it again
+    pip uninstall triton
+
 %runscript
 
     python3 "$@"
