@@ -1,0 +1,27 @@
+# Check that there is correct markdown in all files
+name: Check markdown
+
+# Run this script on the 3rd day of the month.
+# 3rd as the first letter of this repo is the 3rd letter in the alphabet.
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: "0 0 3 * *"
+
+jobs:
+  check_markdown:
+
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      - uses: articulate/actions-markdownlint@v1
+        with:
+          config: .markdownlint.jsonc
+          ignore: .markdownlintignore
+

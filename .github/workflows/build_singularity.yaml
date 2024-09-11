@@ -1,0 +1,44 @@
+# Build the Singularity container
+name: Buid Singularity container
+
+# Run this script on the 3rd day of the month.
+# 3rd as the first letter of this repo is the 3rd letter in the alphabet.
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  schedule:
+  - cron: "0 0 3 * *"
+
+jobs:
+  build_singularity:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        singularity_version:
+          - '3.8.1'
+    container:
+      image: quay.io/singularity/singularity:v${{ matrix.singularity_version }}
+      options: --privileged
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show singularity version
+        run: singularity version
+
+      - name: Build container
+        run: ./create.sh
+
+      - name: Test container
+        run: singularity test dnabert2_with_triton.sif
+
+      - name: Show help of container
+        run: singularity run-help dnabert2_with_triton.sif
+

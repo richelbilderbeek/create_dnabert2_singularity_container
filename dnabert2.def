@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: python:3.8.19
+
+# From https://geniac.readthedocs.io/en/latest/conda.html#example2-activate-the-conda-environment-at-startup-with-singularity-exec-or-run
+%environment
+    export LC_ALL=en_US.utf-8
+    export LANG=en_US.utf-8
+    export BASH_ENV=/root/bashrc
+
+%post
+    cd /opt
+    git clone https://github.com/MAGICS-LAB/DNABERT_2
+    cd DNABERT_2
+
+    python3 -m pip install -r requirements.txt
+
+%runscript
+
+    python3 "$@"
+
+%labels
+
+    AUTHOR Richel J.C. Bilderbeek
+
+    NAME DNABERT2
+ 
+    DESCRIPTION The tool DNABERT2
+
+    USAGE Provide the path to a Python file and the container will run it
+
+    URL https://github.com/richelbilderbeek/create_dnabert2_singularity_container
+
+    VERSION 0.3

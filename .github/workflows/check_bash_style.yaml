@@ -1,0 +1,25 @@
+# Check that the bash script style is correct
+name: Check bash style
+
+# Run this script on the 3rd day of the month.
+# 3rd as the first letter of this repo is the 3rd letter in the alphabet.
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: "0 0 3 * *"
+
+
+jobs:
+  check_bash_style:
+
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      - name: Check bash scripts for style
+        run: shellcheck scripts/*.sh
