@@ -7,3 +7,5 @@ git clone https://github.com/MAGICS-LAB/DNABERT_2
 cd DNABERT_2
 python3 -m pip install -r requirements.txt
 cd ..
+
+pip uninstall -y triton
